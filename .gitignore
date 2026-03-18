@@ -1,0 +1,25 @@
+# ─── Environment variables (NEVER push these) ─────────────────────────────────
+.env
+.env.local
+.env.production
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ─── Logs & data ──────────────────────────────────────────────────────────────
+*.log
+logs/
+*.json
+!.env.example
+
+# ─── OS files ─────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

@@ -1,14 +1,25 @@
 # telegram_bot.py
+import os
 import requests
 import urllib3
+from dotenv import load_dotenv
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import datetime
 
+# ─── Load environment variables ───────────────────────────────────────────────
+
+load_dotenv()
+
 # ─── Configuration ────────────────────────────────────────────────────────────
 
-BOT_TOKEN = "8724011696:AAEEwtVnXqk8Gdswd62kqQ8g5KmjbDsmLGQ"
-CHAT_ID   = "1245906197"
-BASE_URL  = f"https://api.telegram.org/bot"+BOT_TOKEN
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID")
+BASE_URL  = "https://api.telegram.org/bot" + (BOT_TOKEN or "")
+
+if not BOT_TOKEN:
+    raise ValueError("TELEGRAM_BOT_TOKEN not found. Add it to your .env file.")
+if not CHAT_ID:
+    raise ValueError("TELEGRAM_CHAT_ID not found. Add it to your .env file.")
 
 
 # ─── Core Send Function ───────────────────────────────────────────────────────
